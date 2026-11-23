@@ -10,7 +10,7 @@ if type(cfg) ~= 'table' or cfg.Enabled == false then return end
 local L = D11Hud.L
 local KVP = 'whip_hud_layout_v1'
 local COMMAND = cfg.Command or 'hud'
-local PARTS = { 'status', 'radar', 'route', 'gauge', 'ammo', 'hints', 'belt' }
+local PARTS = { 'status', 'radar', 'route', 'gauge', 'ammo', 'hints', 'belt', 'map' }
 
 local function number(v, lo, hi, default)
     v = tonumber(v)
@@ -46,6 +46,35 @@ end
 
 local open = false
 
+-- The minimap is drawn in whip_core's page, which whip_hud's page cannot reach: whip_core's own client moves it, through
+-- the SetMinimapOffset export of whip_core-patches/ (x, y in vh from the default spot, scale). Without the patch the map
+-- stays put (and F8 says so once).
+local warned = false
+local function pushMap(v)
+    v = type(v) == 'table' and v or {}
+    local ok = pcall(function() return exports.whip_core:SetMinimapOffset(number(v.x, -200, 200, 0), number(v.y, -200, 200, 0), number(v.s, 0.5, 1.6, 1)) end)
+    if not ok and not warned and GetResourceState('whip_core') == 'started' then
+        warned = true
+        print('^3[whip_hud] the minimap cannot be moved: whip_core has no SetMinimapOffset export (apply whip_core-patches/whip_core-minimap-offset-d11.patch)^0')
+    end
+    return ok
+end
+
+-- the saved spot, once whip_core is up (and again if it restarts)
+CreateThread(function()
+    local was = false
+    while true do
+        local up = GetResourceState('whip_core') == 'started'
+        if up and not was then
+            Wait(2500)
+            local l = Hud.state.layout
+            if l and l.map then pushMap(l.map) end
+        end
+        was = up
+        Wait(2000)
+    end
+end)
+
 local function setOpen(value)
     if open == value then return end
     open = value
@@ -80,7 +109,14 @@ RegisterNUICallback('editorSave', function(data, cb)
     SetResourceKvp(KVP, json.encode({ layout = layout, pinStatus = pin }))
     Hud.set('layout', layout)
     Hud.set('pinStatus', pin)
+    pushMap(layout.map)
     setOpen(false)
+    cb({ ok = true })
+end)
+
+-- while dragging in /hud: the real map follows
+RegisterNUICallback('mapMove', function(data, cb)
+    if open or type(data) == 'table' then pushMap(data) end
     cb({ ok = true })
 end)
 

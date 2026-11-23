@@ -1,0 +1,51 @@
+diff -ruN a/whip_core/client/minimap.lua b/whip_core/client/minimap.lua
+--- a/whip_core/client/minimap.lua	2026-11-23 17:00:43.570054856 +0000
++++ b/whip_core/client/minimap.lua	2026-11-23 17:00:43.586166668 +0000
+@@ -340,6 +340,8 @@
+ 
+ --- The box: the black skin's frame box at this screen's shape and safe zone, as client/hud_skin.lua works it out —
+ --- fractions of the screen, from the left and the top.
++local mapOffset = { x = 0, y = 0, s = 1 }   -- SetMinimapOffset: a HUD resource's move of the map (vh from its place, scale)
++
+ local function sendBox(force)
+     local f = HudSkinGetFrame and HudSkinGetFrame() or FRAME_DEFAULT
+     local w, h = GetActiveScreenResolution()
+@@ -357,14 +359,24 @@
+         shape = Config.MinimapMask or 'rounded',
+         border = border,   -- 'full' | 'outline' | 'none'
+         speedUnit = SPEED_UNIT,
++        dx = mapOffset.x, dy = mapOffset.y, scale = mapOffset.s,
+     }
+-    local key = ('%.4f %.4f %.4f %.4f %s %s'):format(box.left, box.top, box.width, box.height, box.shape, box.border)
++    local key = ('%.4f %.4f %.4f %.4f %s %s %.3f %.3f %.3f'):format(box.left, box.top, box.width, box.height, box.shape, box.border, box.dx, box.dy, box.scale)
+     if key == sentBox and not force then return end
+     sentBox = key
+     box.action = 'minimapBox'
+     SendNUIMessage(box)
+ end
+ 
++--- Lets a HUD resource move the map: dx, dy in vh from where the HUD's theme puts it, s its scale (0.5 - 1.6).
++--- The page only exposes them as --mm-ox / --mm-oy / --mm-z on #minimap3d; a theme's CSS decides what they do.
++exports('SetMinimapOffset', function(dx, dy, s)
++    dx, dy, s = tonumber(dx) or 0, tonumber(dy) or 0, tonumber(s) or 1
++    mapOffset = { x = math.max(-200, math.min(200, dx)), y = math.max(-200, math.min(200, dy)), s = math.max(0.5, math.min(1.6, s)) }
++    sendBox(true)
++    return true
++end)
++
+ -- A border chosen in Settings shows at once (on the preview too, where the minimap itself is hidden).
+ PlayerPrefs.onChange('map.border', function() sendBox(false) end)
+ 
+diff -ruN a/whip_core/html/js/minimap.js b/whip_core/html/js/minimap.js
+--- a/whip_core/html/js/minimap.js	2026-11-23 17:00:43.572539260 +0000
++++ b/whip_core/html/js/minimap.js	2026-11-23 17:00:43.586353537 +0000
+@@ -391,6 +391,9 @@
+ NuiRouter.register('minimapBox', (d) => {
+     if (!d || typeof d.left !== 'number') return;
+     boxFr = { left: d.left, top: d.top, width: d.width, height: d.height };
++    hudRoot.style.setProperty('--mm-ox', String(+d.dx || 0));
++    hudRoot.style.setProperty('--mm-oy', String(+d.dy || 0));
++    hudRoot.style.setProperty('--mm-z', String(+d.scale || 1));
+     look = {
+         shape: d.shape === 'circle' || d.shape === 'square' ? d.shape : 'rounded',
+         border: d.border === 'full' || d.border === 'outline' ? d.border : 'none',

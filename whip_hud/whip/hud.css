@@ -18,9 +18,9 @@
     --mm-w: 21vh;
     --mm-h: 13.5vh;
     --mm-r: 1.6vh;
-    left: calc(3vh + var(--mm-w) / 2) !important;
-    top: calc(100vh - 3vh - var(--mm-h) / 2) !important;
-    transform: translate(-50%, -50%);
+    left: calc(3vh + var(--mm-w) / 2 + var(--mm-ox, 0) * 1vh) !important;
+    top: calc(100vh - 3vh - var(--mm-h) / 2 + var(--mm-oy, 0) * 1vh) !important;
+    transform: translate(-50%, -50%) scale(var(--mm-z, 1));
     clip-path: inset(max(0px, calc(50% - var(--mm-h) / 2)) max(0px, calc(50% - var(--mm-w) / 2)) round var(--mm-r));
     border-radius: 0;
     box-shadow: none !important;

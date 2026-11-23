@@ -15,6 +15,7 @@
         { id: 'ammo', sel: '#ammo', label: 'Munição' },
         { id: 'hints', sel: '#hints', label: 'Dicas de teclas' },
         { id: 'belt', sel: '#passenger-seatbelt', label: 'Cinto do passageiro' },
+        { id: 'map', sel: '#map-proxy', label: 'Minimapa' },
     ];
     const SAMPLE = {
         radar: true,
@@ -50,9 +51,18 @@
         }
         return out;
     }
+    // WHIP's minimap is in whip_core's page: #map-proxy stands in for it here and Lua moves the real one, live
+    let mapTimer = 0;
+    function sendMap() {
+        mapTimer = 0;
+        const v = isOpen ? entry('map') : (normalize(D.state.layout).map || { x: 0, y: 0, s: 1 });
+        D.post('mapMove', { x: round(v.x), y: round(v.y), s: v.s });
+    }
+    function queueMap() { if (!mapTimer) mapTimer = setTimeout(sendMap, 40); }
     function setVars(id, v) {
         const n = node(id);
         if (!n) return;
+        if (id === 'map' && isOpen) queueMap();
         n.style.setProperty('--dx', String(round(v.x)));
         n.style.setProperty('--dy', String(round(v.y)));
         n.style.setProperty('--s', String(v.s));
@@ -108,7 +118,7 @@
             </div>
             <label class="ed-pin"><input id="ed-pin" type="checkbox"${workPin ? ' checked' : ''}>
                 <span><b>${T('Manter status sempre na tela')}</b><small>${T('Vida, colete, energia, fome, sede e estresse')}</small></span></label>
-            <p class="ed-note">${T('O minimapa e o medidor de voz são do WHIP e não se movem aqui.')}</p>
+            <p class="ed-note">${T('O medidor de voz é do WHIP e não se move aqui.')}</p>
             <div class="ed-actions">
                 <button type="button" data-act="reset-all">${T('Restaurar tudo')}</button>
                 <button type="button" data-act="cancel">${T('Cancelar')}</button>
@@ -230,11 +240,14 @@
         D.apply('editing', false);
         if (mode === 'save') {
             const layout = compact();
+            clearTimeout(mapTimer); mapTimer = 0;
             D.apply('layout', layout);
             D.apply('pinStatus', workPin);
             D.post('editorSave', { layout, pinStatus: workPin });
         } else {
             applyLayout(savedLayout);
+            clearTimeout(mapTimer); mapTimer = 0;
+            D.post('mapMove', { x: (savedLayout.map || {}).x || 0, y: (savedLayout.map || {}).y || 0, s: (savedLayout.map || {}).s || 1 });
             D.apply('pinStatus', savedPin);
             if (mode === 'cancel') D.post('editorClose');
         }

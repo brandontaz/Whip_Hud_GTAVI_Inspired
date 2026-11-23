@@ -2,6 +2,7 @@
    saved layout (ui/editor.js sets them). transform, not the `translate` property: FiveM's CEF is Chromium 103. ---------- */
 #status  { transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: left top; }
 #status.idle { transform: translate(calc(var(--dx, 0) * 1vh - 1.6em), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); }
+#map-proxy { left: 3vh; bottom: 3vh; width: 21vh; height: 13.5vh; border-radius: 1.6vh; display: none; transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: center; }
 #radar   { transform: translate(calc(-50% + var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: center top; }
 #route   { transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: left bottom; }
 #gauge   { transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: right bottom; }
@@ -18,6 +19,8 @@ html.editing #hud > .area, html.editing #ammo, html.editing #passenger-seatbelt 
 html.editing .movable.sel { outline: .3vh solid var(--teal); cursor: grabbing; }
 html.editing .movable::after { content: attr(data-label); position: absolute; left: .4vh; top: .4vh; z-index: 5; padding: .3vh .8vh; border-radius: .5vh;
     background: var(--pink); color: #fff; font: 700 1.1vh/1.2 D11Text, sans-serif; letter-spacing: .04em; white-space: nowrap; pointer-events: none; }
+html.editing #map-proxy { display: block; background: rgba(155, 92, 255, .22); }
+html.editing #map-proxy::after { left: 0; top: auto; bottom: calc(100% + .9vh); }
 html.editing #passenger-seatbelt::after { left: auto; right: 0; top: auto; bottom: calc(100% + .6vh); }
 html.editing .movable.sel::after { background: var(--teal); color: #0D0618; }
 html.editing #radar { overflow: visible; }

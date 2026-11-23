@@ -15,6 +15,8 @@
          ../whip/hud.css (#minimap3d). -->
     <main id="hud">
         <div id="brand" class="area" hidden><img src="logo.png" alt="" draggable="false"></div>
+        <!-- /hud only: stands in for WHIP's minimap (drawn in whip_core's page) so it can be dragged -->
+        <div id="map-proxy" class="area" aria-hidden="true"></div>
         <section id="radar" class="area" aria-label="Radar compass"></section>
         <section id="route" class="area" aria-label="GPS route"></section>
         <section id="status" class="area"></section>

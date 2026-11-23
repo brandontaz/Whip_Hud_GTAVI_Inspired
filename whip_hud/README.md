@@ -47,7 +47,7 @@ WHIP's own voice gauge stays (only whip_core knows when the player talks), as a 
 
 `/hud` opens the editor (`Menu.Command` in `config.lua`; `Menu.Enabled = false` turns it off).
 
-- **Drag** any part (status, compass, GPS card, speedometer, ammo, key hints, passenger seatbelt) with the mouse; the
+- **Drag** any part (status, compass, **minimap**, GPS card, speedometer, ammo, key hints, passenger seatbelt) with the mouse; the
   arrow keys nudge the selected one (Shift = faster). Parts can't be dragged off the screen.
 - **Size**: a slider per part, 50% to 160%. **Reset this part** / **Reset all** put the defaults back.
 - **Keep status on screen**: health, armour, energy, food, water and stress stay visible all the time instead of fading
@@ -55,7 +55,19 @@ WHIP's own voice gauge stays (only whip_core knows when the player talks), as a 
 - **Save** keeps it on that PC (KVP, so it survives restarts); **Cancel** / Esc throws the changes away.
 
 The compass, GPS card, ammo and seatbelt tile are shown with sample data while you edit, and the real values are held
-back until you close it. The **minimap and WHIP's voice gauge belong to WHIP's own page**, so they can't be dragged here.
+back until you close it. WHIP's voice gauge belongs to WHIP's own page and can't be dragged here.
+
+**Moving the minimap needs a small whip_core patch.** The map is drawn in whip_core's page, which whip_hud can't reach,
+so whip_core gets one export, `SetMinimapOffset(x, y, scale)`, that hands the page an offset (`--mm-ox`, `--mm-oy`,
+`--mm-z` on `#minimap3d`, used by `whip/hud.css`). In `/hud` a purple box stands in for the map; the real map follows it
+live. Without the patch the box still drags but the map stays put (F8 says so once).
+
+```
+cd resources
+patch -p1 < whip_hud/whip_core-patches/whip_core-minimap-offset-d11.patch
+```
+
+Restart whip_core, and reconnect once so FiveM re-downloads the page's JS.
 
 ## whip_theme (overrides WHIP's old HUD)
 

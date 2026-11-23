@@ -17,11 +17,11 @@ window.D11Locales = {
         'Editar HUD': 'Edit HUD',
         'Arraste cada parte para onde quiser. As setas do teclado movem a parte escolhida (Shift = mais rápido).': 'Drag each part wherever you want it. The arrow keys nudge the selected part (Shift = faster).',
         'Status': 'Status', 'Bússola': 'Compass', 'Cartão GPS': 'GPS card', 'Velocímetro': 'Speedometer',
-        'Munição': 'Ammo', 'Dicas de teclas': 'Key hints', 'Cinto do passageiro': 'Passenger seatbelt',
+        'Munição': 'Ammo', 'Dicas de teclas': 'Key hints', 'Cinto do passageiro': 'Passenger seatbelt', 'Minimapa': 'Minimap',
         'Tamanho': 'Size', 'Restaurar esta parte': 'Reset this part', 'Restaurar tudo': 'Reset all',
         'Manter status sempre na tela': 'Keep status on screen',
         'Vida, colete, energia, fome, sede e estresse': 'Health, armour, energy, food, water and stress',
-        'O minimapa e o medidor de voz são do WHIP e não se movem aqui.': 'The minimap and the voice gauge belong to WHIP and cannot be moved here.',
+        'O medidor de voz é do WHIP e não se move aqui.': 'The voice gauge belongs to WHIP and cannot be moved here.',
         'Cancelar': 'Cancel', 'Salvar': 'Save',
     },
 };
