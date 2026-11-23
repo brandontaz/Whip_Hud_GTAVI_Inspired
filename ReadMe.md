@@ -1,7 +1,7 @@
 whip_hud
 A WHIP HUD based on d11_hud by DLady25 (District 11, “D11”).
 Preview
-<!-- Add screenshots to the images/ folder, then uncomment and update these image links.
+
 
 ![WHIP HUD preview](images/hud-preview.png)
 ![HUD editor preview](images/hud-editor.png)
