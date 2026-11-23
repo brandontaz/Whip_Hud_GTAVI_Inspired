@@ -1,0 +1,5 @@
+/* whip_hud as a WHIP theme (server.lua: only when no other theme is active). Only the HUD layer, no tokens:
+   WHIP's menus, inventory and notifications keep their own look. ?v=N: FiveM's NUI caches CSS by its address. */
+@import url('whip/hud.css?v=5');      /* WHIP's rev dial hidden, round minimap under the radar ring */
+@import url('whip/status-layer.css?v=4');   /* WHIP's status gauges hidden, voice as a circle: server.lua writes it
+                                               from whip/status.css, or empty with D11Hud.Status = false */

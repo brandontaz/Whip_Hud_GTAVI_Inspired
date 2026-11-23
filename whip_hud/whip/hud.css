@@ -1,0 +1,53 @@
+/* ========================================
+   whip_hud inside whip_core's page: the map and the dial (theme.css imports it).
+     - hides WHIP's 3D rev dial (#vehicleDial): whip_hud's speedometer replaces it;
+     - clips WHIP's minimap to a GTA VI rounded rectangle, bottom-left, under whip_hud's frame.
+   WHIP's own status gauges are status.css's business (keep them: drop that import, README).
+   From your own WHIP theme: @import url('https://cfx-nui-whip_hud/whip/hud.css');
+   ======================================== */
+
+/* ---------- WHIP's 3D rev dial: whip_hud's speedometer replaces it ---------- */
+#vehicleDial { display: none !important; }
+/* ---------- GTA VI minimap: a rounded rectangle, bottom-left, under whip_hud's page; the compass is at the top middle ----------
+   The map is WHIP's (#minimap3d: minimap.js places and sizes it in px from hud_skin.lua's box). It moves to the
+   bottom-left corner, centred on whip_hud's frame (#radar in ui/hud.css: left 3vh, bottom 3vh, 21vh x 13.5vh) and is
+   clipped to that rounded rectangle. The box keeps its size, so the map does not stretch: the centre comes from
+   translate(-50%, -50%) on the box itself (left/top beat the inline style). If your map box is smaller than the
+   frame, max(0px, ...) keeps the clip valid and the map simply fills the box. Tune --mm-* together with #radar. */
+#minimap3d {
+    --mm-w: 21vh;
+    --mm-h: 13.5vh;
+    --mm-r: 1.6vh;
+    left: calc(3vh + var(--mm-w) / 2) !important;
+    top: calc(100vh - 3vh - var(--mm-h) / 2) !important;
+    transform: translate(-50%, -50%);
+    clip-path: inset(max(0px, calc(50% - var(--mm-h) / 2)) max(0px, calc(50% - var(--mm-w) / 2)) round var(--mm-r));
+    border-radius: 0;
+    box-shadow: none !important;
+}
+/* The frame: WHIP's page is drawn OVER whip_hud's, so a frame on whip_hud's page would sit under the map. It is drawn
+   here instead, on top of the map and inside the clip (a pink-to-violet-to-teal border). CEF is Chromium 103: the
+   -webkit- mask with xor is how a border-only gradient is made there. */
+#minimap3d::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--mm-w);
+    height: var(--mm-h);
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    border-radius: var(--mm-r);
+    padding: .38vh;
+    background: linear-gradient(135deg, #FF3C8E 0%, #9B5CFF 55%, #28E1D0 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+    z-index: 10;
+}
+#minimap3d .mm-north { display: none; }
+/* inventory open: the map goes (whip_hud's ring already hides with any WHIP screen). #minimap3d is the body's last
+   child; a custom renderer uses #inv-custom-root (hidden when closed; empty without a renderer), WHIP's own
+   #inv-overlay.open. */
+#inv-custom-root:not([hidden]):not(:empty) ~ #minimap3d,
+#inv-overlay.open ~ #minimap3d { opacity: 0 !important; transition: opacity .15s ease; }

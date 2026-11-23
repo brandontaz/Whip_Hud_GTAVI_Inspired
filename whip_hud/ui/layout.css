@@ -1,0 +1,50 @@
+/* ---------- /hud layout: every movable part takes an offset (--dx, --dy in vh) and a scale (--s) from the player's
+   saved layout (ui/editor.js sets them). transform, not the `translate` property: FiveM's CEF is Chromium 103. ---------- */
+#status  { transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: left top; }
+#status.idle { transform: translate(calc(var(--dx, 0) * 1vh - 1.6em), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); }
+#radar   { transform: translate(calc(-50% + var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: center top; }
+#route   { transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: left bottom; }
+#gauge   { transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: right bottom; }
+#hints   { transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: right bottom; }
+#ammo, #ammo.visible { transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: right top; }
+#passenger-seatbelt, #passenger-seatbelt.visible { transform: translate(calc(var(--dx, 0) * 1vh), calc(var(--dy, 0) * 1vh)) scale(var(--s, 1)); transform-origin: right bottom; }
+
+/* ---------- editing: parts get an outline and a label, the rest of the screen is dimmed ---------- */
+html.editing body::before { content: ''; position: fixed; inset: 0; background: rgba(8, 3, 16, .45); pointer-events: none; }
+html.editing #hud { z-index: 1; }
+html.editing #hud > .area, html.editing #ammo, html.editing #passenger-seatbelt {
+    pointer-events: auto; cursor: grab; user-select: none; transition: none !important;
+    outline: .25vh dashed var(--pink); outline-offset: .5vh; }
+html.editing .movable.sel { outline: .3vh solid var(--teal); cursor: grabbing; }
+html.editing .movable::after { content: attr(data-label); position: absolute; left: .4vh; top: .4vh; z-index: 5; padding: .3vh .8vh; border-radius: .5vh;
+    background: var(--pink); color: #fff; font: 700 1.1vh/1.2 D11Text, sans-serif; letter-spacing: .04em; white-space: nowrap; pointer-events: none; }
+html.editing #passenger-seatbelt::after { left: auto; right: 0; top: auto; bottom: calc(100% + .6vh); }
+html.editing .movable.sel::after { background: var(--teal); color: #0D0618; }
+html.editing #radar { overflow: visible; }
+/* parts that are empty off the road get a stand-in box the size they would have */
+html.editing #gauge { min-width: 16.7rem; min-height: 13.8rem; background: rgba(155, 92, 255, .22); border-radius: 1.2vh; }
+html.editing #hints { display: block !important; min-width: 14rem; min-height: 4rem; max-width: none; background: rgba(155, 92, 255, .22); border-radius: 1vh; }
+
+/* ---------- the editor panel ---------- */
+#editor { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 20; width: min(31rem, 92vw); box-sizing: border-box; padding: 1.2rem 1.3rem 1.1rem;
+    border-radius: 1rem; background: rgba(20, 8, 36, .94); color: var(--ink); pointer-events: auto; font: 500 .85rem/1.35 D11Text, 'Segoe UI', sans-serif;
+    box-shadow: 0 0 0 1px rgba(255, 246, 251, .12), 0 0 0 .2rem rgba(255, 60, 142, .55), 0 1rem 2.5rem rgba(0, 0, 0, .6), 0 0 2rem rgba(155, 92, 255, .35); }
+#editor[hidden] { display: none; }
+#editor .ed-title { margin: 0 0 .5rem; font: italic 700 1.35rem/1 D11Display, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: move; }
+#editor .ed-title::after { content: ''; display: block; height: .18rem; width: 3.5rem; margin-top: .45rem; border-radius: 9px; background: linear-gradient(90deg, var(--pink), var(--violet), var(--teal)); }
+#editor p { margin: .5rem 0; color: rgba(255, 246, 251, .72); }
+#editor .ed-note { font-size: .75rem; color: rgba(255, 246, 251, .5); }
+#editor button { font: 700 .8rem/1 D11Text, sans-serif; color: var(--ink); cursor: pointer; border: 0; border-radius: .5rem; padding: .55rem .8rem; background: rgba(255, 246, 251, .1); transition: background .15s; }
+#editor button:hover { background: rgba(255, 246, 251, .2); }
+#editor .ed-parts { display: flex; flex-wrap: wrap; gap: .4rem; margin: .7rem 0; }
+#editor .ed-parts button.on { background: var(--teal); color: #0D0618; }
+#editor .ed-size { display: grid; grid-template-columns: auto 1fr 3rem; gap: .5rem .7rem; align-items: center; margin: .6rem 0 .9rem; }
+#editor .ed-size button { grid-column: 1 / -1; justify-self: start; }
+#editor output { text-align: right; font-variant-numeric: tabular-nums; }
+#editor input[type=range] { width: 100%; accent-color: var(--pink); }
+#editor .ed-pin { display: flex; gap: .7rem; align-items: flex-start; padding: .7rem .8rem; border-radius: .6rem; background: rgba(255, 246, 251, .07); cursor: pointer; }
+#editor .ed-pin input { margin-top: .15rem; width: 1.1rem; height: 1.1rem; accent-color: var(--pink); flex: none; }
+#editor .ed-pin b { display: block; font-weight: 700; }
+#editor .ed-pin small { display: block; margin-top: .15rem; color: rgba(255, 246, 251, .6); font-size: .75rem; }
+#editor .ed-actions { display: flex; gap: .5rem; justify-content: flex-end; margin-top: .9rem; }
+#editor .ed-actions .save { background: linear-gradient(135deg, #FF3C8E, #FF1F7A); box-shadow: 0 0 1rem rgba(255, 60, 142, .45); }

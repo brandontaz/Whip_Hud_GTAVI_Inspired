@@ -1,0 +1,197 @@
+:root {
+    --ink: #FFF6FB;
+    --panel: rgba(20, 8, 36, 0.78);
+    --line: rgba(255, 246, 251, .16);
+    --accent: #FF3C8E;       /* GTA VI pink */
+    --pink: #FF3C8E;
+    --hot: #FF1F7A;
+    --violet: #9B5CFF;
+    --teal: #28E1D0;
+    --sun: #FFB347;
+    --night: #0D0618;
+    --talk: #28E1D0;
+    --radio: #62c8f2;
+    --crit: #FF3B4F;
+    --warn: #FFB347;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+    font-size: 16px;
+    color: var(--ink);
+    user-select: none;
+}
+
+#hud { position: fixed; inset: 0; pointer-events: none; }
+#hud > .area { position: absolute; }
+#hud > .area[hidden] { display: none; }
+
+/* hidden HUD and an open inventory hide everything; separate flags, so closing the inventory does not
+   undo a hidden HUD. */
+html.hud-hidden #hud,
+html.inventory-open #hud { visibility: hidden; }
+html.inactive #hud { visibility: hidden; }
+
+@font-face { font-family: D11Display; src: url('fonts/Quantico-Bold.ttf') format('truetype'); font-weight: 700; font-display: block; }
+@font-face { font-family: D11Text; src: url('fonts/Geist-Medium.woff2') format('woff2'); font-weight: 500; font-display: block; }
+
+@keyframes d12-pulse { 50% { opacity: .35; } }
+.low { animation: d12-pulse 1s ease-in-out infinite; }
+
+svg.ic { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- status, top-left: slim segmented bars (ui/status.js). 1em = 1vh, so it scales with the screen ---------- */
+#status { left: 3vh; top: 3vh; width: 34em; font-size: 1vh; transition: opacity .6s ease, transform .6s ease; filter: drop-shadow(0 .3em .7em rgba(0, 0, 0, .55)); }
+#status.idle { opacity: 0; transform: translateX(-1.6em); }
+.sbars { width: 30em; }
+.bar { position: relative; display: flex; align-items: center; gap: 1em; height: 2.4em; }
+.bar[hidden], .chip[hidden] { display: none; }
+/* the white separator between two bars */
+.bar:not([hidden]) ~ .bar:not([hidden])::before { content: ''; position: absolute; left: 3.2em; right: 0; top: -.06em; height: .12em; background: rgba(255, 255, 255, .8); }
+.bar .ico { flex: none; width: 2.2em; height: 2.2em; display: grid; place-items: center; color: var(--c); }
+.bar .ico svg.ic { width: 1.7em; height: 1.7em; stroke-width: 2.2; filter: drop-shadow(0 0 .35em var(--c)); }
+.bar .track { position: relative; flex: 1; height: 1em; box-sizing: border-box; overflow: hidden; border-radius: .35em;
+    background: rgba(21, 10, 34, .82); border: .2em solid #06020c; box-shadow: 0 0 0 .08em rgba(255, 255, 255, .12); }
+.bar .fill { position: absolute; inset: 0; transform-origin: left; transform: scaleX(var(--v, 1)); transition: transform .35s ease-out;
+    background: linear-gradient(90deg, var(--c0), var(--c)); box-shadow: 0 0 .9em var(--c); }
+.bar .fill::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: .2em; background: #fff; opacity: .9; }
+/* segment ticks every 10% */
+.bar .track::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(90deg, transparent 0 calc(10% - .12em), #06020c calc(10% - .12em) 10%); }
+.bar.empty .fill::after { display: none; }
+.bar.health.crit { --c: #FF3B4F; --c0: #b3122a; }
+.bar.health.crit .ico, .bar.health.crit .fill { animation: gta-pulse .9s ease-in-out infinite; }
+@keyframes gta-pulse { 50% { opacity: .45; } }
+
+.chips { display: flex; flex-wrap: wrap; gap: .9em 1.4em; margin: .9em 0 0 3.2em; }
+.chip { display: flex; align-items: center; gap: .6em; color: var(--c); }
+.chip svg.ic { width: 1.6em; height: 1.6em; stroke-width: 2.2; }
+.chip .meter { width: 4.2em; height: .5em; border-radius: .2em; background: rgba(255, 246, 251, .2); overflow: hidden; }
+.chip .meter i { display: block; width: 100%; height: 100%; transform-origin: left; background: currentColor; box-shadow: 0 0 .6em currentColor; transition: transform .3s linear; }
+.chip.low { color: var(--crit); animation: gta-pulse .9s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .bar.health.crit .ico, .bar.health.crit .fill, .chip.low { animation: none; } #status { transition: none; } }
+
+svg.ic { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- speedometer (ui/gauge.js: one 180 x 180 SVG, radii listed there) ---------- */
+/* right: 7.5rem leaves the bottom-right corner to WHIP's voice bars (whip/status.css) */
+#gauge { right: 7.5rem; bottom: 1.5rem; }
+/* 1.15: a little bigger than 12rem; scaled from the bottom-right corner so it stays put */
+.gauge { position: relative; width: 14.5rem; height: 12rem; transform: scale(1.15); transform-origin: right bottom;
+    color: #fff6fb; font-family: D11Display, sans-serif; font-weight: 700; filter: drop-shadow(0 1px 2px #0009); }
+.gauge[hidden], .g-ind > span[hidden] { display: none; }
+.g-dial { position: absolute; left: 0; top: 0; width: 12rem; height: 12rem; overflow: visible; fill: none; }
+.g-rim { stroke: #ff3c8e99; stroke-width: 1.2; filter: drop-shadow(0 0 3px #ff3c8e99); }
+.g-inner { stroke: #ffffff0f; stroke-width: .75; }
+.g-rpm-track { stroke: #ffffff1a; stroke-width: 4.5; }
+.g-rpm { stroke-width: 4.5; }
+.g-reveal { transition: stroke-dasharray 100ms linear; }
+.electric .g-rpm { stroke: #28e1d0 !important; }
+.g-fuel-track { stroke: #ffffff1c; stroke-width: 3; stroke-linecap: round; }
+.g-fuel { stroke: var(--fuel-color, #edf1f4); stroke-width: 3; stroke-linecap: round; transition: stroke-dasharray 200ms linear, stroke 200ms linear; }
+/* nitrous: a thin arc inside the RPM band, on the left; turbo: the same on the right */
+.g-nitro-track, .g-turbo-track { stroke: #ffffff12; stroke-width: 2.5; stroke-linecap: round; }
+.g-nitro { stroke: #28e1d0; stroke-width: 2.5; stroke-linecap: round; filter: drop-shadow(0 0 1.5px #28e1d0aa); transition: stroke-dasharray 120ms linear, stroke 120ms linear; }
+.g-nitro.burst { stroke: #b8fff6; filter: drop-shadow(0 0 3px #28e1d0); }
+.g-turbo { stroke: #ffb347; stroke-width: 2.5; stroke-linecap: round; filter: drop-shadow(0 0 1.5px #ffb347aa); transition: stroke-dasharray 120ms linear; }
+.g-turbo.full { stroke: #ffd9a0; filter: drop-shadow(0 0 3px #ffb347); }
+/* the readout: SVG text in the dial's own units (1 unit = 12rem / 180) */
+.g-txt { fill: #fff6fb; stroke: none; text-anchor: middle; dominant-baseline: central; font-family: D11Display, sans-serif; font-weight: 700; font-variant-numeric: tabular-nums; }
+.g-gear-ring { fill: #ffffff08; stroke: #ff3c8ee6; stroke-width: 1.2; }
+.g-gear { font-size: 15px; font-style: italic; }
+.air .g-gear { font-size: 11px; }
+.g-gear-label { font-size: 6px; letter-spacing: .14em; fill-opacity: .55; }
+.g-speed { font-size: 41px; font-style: italic; letter-spacing: -.04em; filter: drop-shadow(0 0 4px #ff3c8e99); }
+.g-unit { font-size: 8.5px; letter-spacing: .12em; fill: #ff8cbf; }
+.g-boost { font-size: 11px; font-style: italic; fill: #ffb347; }
+.g-boost-u { font-size: 6px; font-style: normal; letter-spacing: .14em; fill: #fff6fb; fill-opacity: .6; }
+.gi { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.g-fuel-icon { color: var(--fuel-color, #edf1f4); transition: color 200ms linear; }
+@keyframes g-blink { 50% { opacity: .2; } }
+.fuel-low .g-fuel, .fuel-low .g-fuel-icon { animation: g-blink 1.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .g-reveal, .g-fuel, .g-nitro, .g-turbo, .g-fuel-icon { transition: none; } .fuel-low .g-fuel, .fuel-low .g-fuel-icon { animation: none; } }
+svg.gi { width: 1rem; height: 1rem; }
+.g-ind { position: absolute; top: 1.6rem; bottom: .5rem; right: 0; display: flex; flex-direction: column; justify-content: center; gap: .35rem; }
+.g-ind > span { width: 1.7rem; min-height: 1.7rem; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 50%;
+    background: #150a22cc; box-shadow: inset 0 0 0 1px #ffffff12; color: #ffffff59; transition: color 150ms linear, box-shadow 150ms linear; }
+.g-ind > .on { color: #eef2f5; box-shadow: inset 0 0 0 1px #ffffff2e; }
+.g-ind > .warning { color: #e9978e; }
+.g-ind > .blue { color: #7dc8ec; }
+.g-ind > [data-i="engine"] { color: var(--engine-color, #edf1f4); transition: color 200ms linear; }
+.g-ind .unlocked .shackle { transform: translateY(-2px) rotate(-24deg); transform-origin: 8px 10px; }
+.g-meter { width: .8rem; height: 2px; margin-top: .15rem; background: linear-gradient(to right, currentColor calc(var(--level, 0) * 100%), #ffffff20 0); }
+
+/* ---------- logo (D11Hud.Logo) ---------- */
+#brand { bottom: 1rem; left: 50%; transform: translateX(-50%); width: clamp(88px, 7vw, 132px); filter: drop-shadow(0 2px 3px #0008); }
+#brand[hidden] { display: none; }
+#brand img { display: block; width: 100%; height: auto; }
+
+/* ---------- compass, top middle (GTA VI) ----------
+   A wide tape that scrolls with the camera, with the area, street and heading under it. (WHIP's page is drawn over
+   this one, which is why none of this sits on the minimap; the map's own pink border is in ../whip/hud.css.) */
+#radar { left: 50%; top: 2.4vh; width: 44vh; height: 5vh; transform: translateX(-50%); border-radius: 1.2vh; overflow: hidden;
+    display: flex; flex-direction: column; background: rgba(13, 6, 24, .86);
+    box-shadow: inset 0 0 0 .2vh rgba(255, 60, 142, .85), 0 .4vh 1.2vh rgba(0, 0, 0, .5), 0 0 1.6vh rgba(255, 60, 142, .25); }
+#radar[hidden] { display: none; }
+/* compass tape */
+.r-tape { position: relative; flex: none; height: 2.8vh; overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent); mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent); }
+.r-strip { position: absolute; top: 0; bottom: 0; left: 50%; will-change: transform; }
+.r-strip .tk { position: absolute; top: .5vh; width: 1px; height: .55vh; margin-left: -.5px; background: rgba(255, 246, 251, .5); }
+.r-strip .tk.mj { height: .85vh; background: rgba(255, 246, 251, .85); }
+.r-strip .tk.n { background: var(--pink); width: 2px; }
+.r-strip .lt { position: absolute; top: 1.3vh; transform: translateX(-50%); font: italic 700 1.15vh/1 D11Display, sans-serif; color: var(--ink); text-shadow: 0 1px 2px #000; }
+.r-strip .lt.it { font-size: .9vh; opacity: .75; }
+.r-strip .lt.n { color: var(--pink); }
+.r-pointer { position: absolute; left: 50%; top: .08vh; width: 0; height: 0; transform: translateX(-50%);
+    border-left: .55vh solid transparent; border-right: .55vh solid transparent; border-top: .7vh solid var(--pink); filter: drop-shadow(0 0 .4vh var(--pink)); }
+/* area and street, heading */
+.r-foot { flex: none; height: 2.2vh; display: flex; align-items: center; justify-content: space-between; gap: 1vh; padding: 0 1.2vh; box-sizing: border-box; border-top: .1vh solid rgba(255, 246, 251, .14); }
+.r-loc { min-width: 0; flex: 1; display: flex; align-items: baseline; gap: 1vh; }
+.r-loc span { max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.r-loc span:empty { display: none; }
+.r-area { flex: none; max-width: 45%; font: 700 .8vh/1 D11Text, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--pink); }
+.r-street { font: italic 700 1.1vh/1 D11Display, sans-serif; letter-spacing: .03em; text-transform: uppercase; color: #fff; }
+.r-deg { flex: none; font: italic 700 .95vh/1 D11Display, sans-serif; font-variant-numeric: tabular-nums; color: #fff; }
+.r-deg i { font-style: inherit; color: var(--pink); margin-left: .4vh; }
+
+/* GPS card, GTA VI pink: next turn and distance, right of the frame */
+#route { left: calc(3vh + 21vh + 1.2vh); bottom: 3vh; filter: drop-shadow(0 .4vh .8vh #0009); }
+.r-card { display: flex; align-items: center; gap: .8vh; height: 3.4vh; padding: 0 1.5vh; box-sizing: border-box; border-radius: 1.2vh;
+    background: linear-gradient(135deg, #FF3C8E, #FF1F7A); color: #fff; box-shadow: 0 0 1.8vh rgba(255, 60, 142, .55), inset 0 0 0 .15vh rgba(255, 255, 255, .25);
+    font: italic 700 1.5vh/1 D11Display, sans-serif; font-variant-numeric: tabular-nums; white-space: nowrap; }
+#route[hidden] { display: none; }
+#route svg.ic { width: 2vh; height: 2vh; stroke-width: 2.6; }
+#route small { margin-left: -.2vh; font-size: 1.1vh; opacity: .8; }
+#route small[hidden] { display: none; }
+
+/* ---------- speedometer: aircraft ---------- */
+.gauge:not(.air) .g-horizon, .gauge:not(.air) .g-vs-wrap, .gauge:not(.air) .g-vs-icon, .gauge:not(.air) .g-air-only { display: none; }
+.g-hz-line { stroke: #ffffff70; stroke-width: 1; }
+.g-pitch line { stroke: #ffffff1f; stroke-width: .7; }
+.g-vs-track { stroke: #ffffff1c; stroke-width: 3; stroke-linecap: round; }
+.g-vs { stroke: var(--vs-color, #62c8f2); stroke-width: 3; stroke-linecap: round; }
+.g-vs-zero { stroke: #ffffff80; stroke-width: 1; }
+.g-vs-icon { color: var(--vs-color, #62c8f2); }
+.g-alt { font-size: 10px; }
+.g-alt .g-n { font-style: italic; }
+.g-alt .g-u, .g-agl { font-size: 6px; letter-spacing: .12em; fill-opacity: .7; }
+.g-agl .g-n { font-size: 7.5px; font-style: italic; letter-spacing: 0; fill-opacity: 1; }
+.g-ind > .alarm { color: var(--crit); animation: g-blink .7s ease-in-out infinite; }
+.g-warn { position: absolute; left: 0; width: 12rem; bottom: -.4rem; text-align: center; }
+.g-warn span { display: inline-block; font: italic 700 .7rem/1 D11Display, sans-serif; letter-spacing: .14em; padding: .25rem .6rem; border-radius: 99px; background: var(--crit); color: #fff; animation: g-blink .7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .g-ind > .alarm, .g-warn span { animation: none; } }
+
+ /* ---------- action hints, bottom-right corner ---------- */
+#hints { right: 7.5rem; bottom: 1.6rem; display: grid; justify-items: end; gap: .35em; width: max-content; max-width: min(28vw, 360px);
+    color: #fff6fb; font: 600 14px/1.25 D11Text, Arial, sans-serif; }
+#hints:empty { display: none; }
+#hints .hint { display: flex; align-items: center; justify-content: flex-end; gap: .55em; max-width: 100%; padding: .2em .35em .2em 1em; border-radius: .4em 0 0 .4em;
+    background: linear-gradient(270deg, rgba(13, 6, 24, .72), rgba(13, 6, 24, 0)); }
+#hints .hint span { text-align: right; overflow-wrap: anywhere; text-shadow: 0 1px 2px #000, 0 0 3px #000; }
+#hints kbd { flex-shrink: 0; min-width: 1.7em; padding: .15em .45em; background: #fff6fb; color: #1a0a2a; border-radius: .35em;
+    box-shadow: 0 .16em 0 #FF3C8E; font: 700 .95em/1.2 D11Display, Arial, sans-serif; text-align: center; text-shadow: none; }

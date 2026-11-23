@@ -1,0 +1,1244 @@
+{
+  "WEAPON_PISTOL": {
+    "label": "P88",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_PISTOL_CLIP_01",
+              "default": true,
+              "image": "base__component_pistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_CLIP_02",
+              "default": false,
+              "image": "base__component_pistol_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "base__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP_02",
+              "default": false,
+              "image": "base__component_at_pi_supp_02.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_PISTOL_P88_NICKEL": {
+        "image": "component_pistol_p88_nickel.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_PISTOL_CLIP_01",
+              "default": true,
+              "image": "component_pistol_p88_nickel__component_pistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_CLIP_02",
+              "default": false,
+              "image": "component_pistol_p88_nickel__component_pistol_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "component_pistol_p88_nickel__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP_02",
+              "default": false,
+              "image": "component_pistol_p88_nickel__component_at_pi_supp_02.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_PISTOL_P88_WOOD": {
+        "image": "component_pistol_p88_wood.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_PISTOL_CLIP_01",
+              "default": true,
+              "image": "component_pistol_p88_wood__component_pistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_CLIP_02",
+              "default": false,
+              "image": "component_pistol_p88_wood__component_pistol_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "component_pistol_p88_wood__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP_02",
+              "default": false,
+              "image": "component_pistol_p88_wood__component_at_pi_supp_02.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_CERAMICPISTOL": {
+    "label": "Ceramic Pistol",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_CERAMICPISTOL_CLIP_01",
+              "default": true,
+              "image": "base__component_ceramicpistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_CERAMICPISTOL_CLIP_02",
+              "default": false,
+              "image": "base__component_ceramicpistol_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_CERAMICPISTOL_SUPP",
+              "default": false,
+              "image": "base__component_ceramicpistol_supp.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_PISTOL50": {
+    "label": "Pistol .50",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_PISTOL50_CLIP_01",
+              "default": true,
+              "image": "base__component_pistol50_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL50_CLIP_02",
+              "default": false,
+              "image": "base__component_pistol50_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "base__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_SUPP_02",
+              "default": false,
+              "image": "base__component_at_ar_supp_02.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_PISTOL50_VARMOD_LUXE": {
+        "image": "component_pistol50_varmod_luxe.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_PISTOL50_CLIP_01",
+              "default": true,
+              "image": "component_pistol50_varmod_luxe__component_pistol50_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL50_CLIP_02",
+              "default": false,
+              "image": "component_pistol50_varmod_luxe__component_pistol50_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "component_pistol50_varmod_luxe__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_SUPP_02",
+              "default": false,
+              "image": "component_pistol50_varmod_luxe__component_at_ar_supp_02.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_MINISMG": {
+    "label": "Mini SMG",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_MINISMG_CLIP_01",
+              "default": true,
+              "image": "base__component_minismg_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_MINISMG_CLIP_02",
+              "default": false,
+              "image": "base__component_minismg_clip_02.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_MICROSMG": {
+    "label": "Micro SMG",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_MICROSMG_CLIP_01",
+              "default": true,
+              "image": "base__component_microsmg_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_MICROSMG_CLIP_02",
+              "default": false,
+              "image": "base__component_microsmg_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "base__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_MACRO",
+              "default": false,
+              "image": "base__component_at_scope_macro.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_SUPP_02",
+              "default": false,
+              "image": "base__component_at_ar_supp_02.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_MICROSMG_VARMOD_LUXE": {
+        "image": "component_microsmg_varmod_luxe.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_MICROSMG_CLIP_01",
+              "default": true,
+              "image": "component_microsmg_varmod_luxe__component_microsmg_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_MICROSMG_CLIP_02",
+              "default": false,
+              "image": "component_microsmg_varmod_luxe__component_microsmg_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "component_microsmg_varmod_luxe__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_MACRO",
+              "default": false,
+              "image": "component_microsmg_varmod_luxe__component_at_scope_macro.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_SUPP_02",
+              "default": false,
+              "image": "component_microsmg_varmod_luxe__component_at_ar_supp_02.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_MICROSMG_VARMOD_SECURITY": {
+        "image": "component_microsmg_varmod_security.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_MICROSMG_CLIP_01",
+              "default": true,
+              "image": "component_microsmg_varmod_security__component_microsmg_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_MICROSMG_CLIP_02",
+              "default": false,
+              "image": "component_microsmg_varmod_security__component_microsmg_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "component_microsmg_varmod_security__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_MACRO",
+              "default": false,
+              "image": "component_microsmg_varmod_security__component_at_scope_macro.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_SUPP_02",
+              "default": false,
+              "image": "component_microsmg_varmod_security__component_at_ar_supp_02.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_MACHINEPISTOL": {
+    "label": "CSmg",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_01",
+              "default": true,
+              "image": "base__component_machinepistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_02",
+              "default": false,
+              "image": "base__component_machinepistol_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_03",
+              "default": false,
+              "image": "base__component_machinepistol_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "base__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_MACHINEPISTOL_BARREL_HEAVY": {
+        "image": "component_machinepistol_barrel_heavy.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_01",
+              "default": true,
+              "image": "component_machinepistol_barrel_heavy__component_machinepistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_02",
+              "default": false,
+              "image": "component_machinepistol_barrel_heavy__component_machinepistol_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_03",
+              "default": false,
+              "image": "component_machinepistol_barrel_heavy__component_machinepistol_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "component_machinepistol_barrel_heavy__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_MACHINEPISTOL_BARREL_LIGHT": {
+        "image": "component_machinepistol_barrel_light.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_01",
+              "default": true,
+              "image": "component_machinepistol_barrel_light__component_machinepistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_02",
+              "default": false,
+              "image": "component_machinepistol_barrel_light__component_machinepistol_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_03",
+              "default": false,
+              "image": "component_machinepistol_barrel_light__component_machinepistol_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "component_machinepistol_barrel_light__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_MACHINEPISTOL_BARREL_MUZZLE": {
+        "image": "component_machinepistol_barrel_muzzle.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_01",
+              "default": true,
+              "image": "component_machinepistol_barrel_muzzle__component_machinepistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_02",
+              "default": false,
+              "image": "component_machinepistol_barrel_muzzle__component_machinepistol_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_03",
+              "default": false,
+              "image": "component_machinepistol_barrel_muzzle__component_machinepistol_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "component_machinepistol_barrel_muzzle__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_MACHINEPISTOL_BARREL_HEAVYMUZZLE": {
+        "image": "component_machinepistol_barrel_heavymuzzle.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_01",
+              "default": true,
+              "image": "component_machinepistol_barrel_heavymuzzle__component_machinepistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_02",
+              "default": false,
+              "image": "component_machinepistol_barrel_heavymuzzle__component_machinepistol_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_MACHINEPISTOL_CLIP_03",
+              "default": false,
+              "image": "component_machinepistol_barrel_heavymuzzle__component_machinepistol_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "component_machinepistol_barrel_heavymuzzle__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_DOUBLEACTION": {
+    "label": "S&W Model 15",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_DOUBLEACTION_CLIP_01",
+              "default": true,
+              "image": "base__component_doubleaction_clip_01.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_COMBATPISTOL": {
+    "label": "Combat Pistol",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_COMBATPISTOL_CLIP_01",
+              "default": true,
+              "image": "base__component_combatpistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_COMBATPISTOL_CLIP_02",
+              "default": false,
+              "image": "base__component_combatpistol_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "base__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "base__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_COMBATPISTOL_VARMOD_LOWRIDER": {
+        "image": "component_combatpistol_varmod_lowrider.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_COMBATPISTOL_CLIP_01",
+              "default": true,
+              "image": "component_combatpistol_varmod_lowrider__component_combatpistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_COMBATPISTOL_CLIP_02",
+              "default": false,
+              "image": "component_combatpistol_varmod_lowrider__component_combatpistol_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "component_combatpistol_varmod_lowrider__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "component_combatpistol_varmod_lowrider__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_PISTOL_MK2": {
+    "label": "Pistol Mk II",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_PISTOL_MK2_CLIP_01",
+              "default": true,
+              "image": "base__component_pistol_mk2_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CLIP_02",
+              "default": false,
+              "image": "base__component_pistol_mk2_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_RAIL",
+              "default": false,
+              "image": "base__component_at_pi_rail.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH_02",
+              "default": false,
+              "image": "base__component_at_pi_flsh_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP_02",
+              "default": false,
+              "image": "base__component_at_pi_supp_02.png"
+            },
+            {
+              "component": "COMPONENT_AT_PI_COMP",
+              "default": false,
+              "image": "base__component_at_pi_comp.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_02",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_02.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_03",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_03.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_04",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_04.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_05",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_05.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_06",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_06.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_07",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_07.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_08",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_08.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_09",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_09.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_10",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_10.png"
+            },
+            {
+              "component": "COMPONENT_PISTOL_MK2_CAMO_IND_01",
+              "default": false,
+              "image": "base__component_pistol_mk2_camo_ind_01.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_HEAVYPISTOL": {
+    "label": "Heavy Pistol",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_HEAVYPISTOL_CLIP_01",
+              "default": true,
+              "image": "base__component_heavypistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_HEAVYPISTOL_CLIP_02",
+              "default": false,
+              "image": "base__component_heavypistol_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "base__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "base__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_HEAVYPISTOL_VARMOD_LUXE": {
+        "image": "component_heavypistol_varmod_luxe.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_HEAVYPISTOL_CLIP_01",
+              "default": true,
+              "image": "component_heavypistol_varmod_luxe__component_heavypistol_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_HEAVYPISTOL_CLIP_02",
+              "default": false,
+              "image": "component_heavypistol_varmod_luxe__component_heavypistol_clip_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_FLSH",
+              "default": false,
+              "image": "component_heavypistol_varmod_luxe__component_at_pi_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "component_heavypistol_varmod_luxe__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_SMG": {
+    "label": "SMG",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_SMG_CLIP_01",
+              "default": true,
+              "image": "base__component_smg_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_SMG_CLIP_02",
+              "default": false,
+              "image": "base__component_smg_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_SMG_CLIP_03",
+              "default": false,
+              "image": "base__component_smg_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_FLSH",
+              "default": false,
+              "image": "base__component_at_ar_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_MACRO_02",
+              "default": false,
+              "image": "base__component_at_scope_macro_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "base__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_SMG_VARMOD_LUXE": {
+        "image": "component_smg_varmod_luxe.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_SMG_CLIP_01",
+              "default": true,
+              "image": "component_smg_varmod_luxe__component_smg_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_SMG_CLIP_02",
+              "default": false,
+              "image": "component_smg_varmod_luxe__component_smg_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_SMG_CLIP_03",
+              "default": false,
+              "image": "component_smg_varmod_luxe__component_smg_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_FLSH",
+              "default": false,
+              "image": "component_smg_varmod_luxe__component_at_ar_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_MACRO_02",
+              "default": false,
+              "image": "component_smg_varmod_luxe__component_at_scope_macro_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_PI_SUPP",
+              "default": false,
+              "image": "component_smg_varmod_luxe__component_at_pi_supp.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_COMBATPDW": {
+    "label": "Combat PDW",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_COMBATPDW_CLIP_01",
+              "default": true,
+              "image": "base__component_combatpdw_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_COMBATPDW_CLIP_02",
+              "default": false,
+              "image": "base__component_combatpdw_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_COMBATPDW_CLIP_03",
+              "default": false,
+              "image": "base__component_combatpdw_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_FLSH",
+              "default": false,
+              "image": "base__component_at_ar_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_AFGRIP",
+              "default": false,
+              "image": "base__component_at_ar_afgrip.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_SMALL",
+              "default": false,
+              "image": "base__component_at_scope_small.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_CARBINERIFLE": {
+    "label": "M13",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_CARBINERIFLE_CLIP_01",
+              "default": true,
+              "image": "base__component_carbinerifle_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_CARBINERIFLE_CLIP_02",
+              "default": false,
+              "image": "base__component_carbinerifle_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_CARBINERIFLE_CLIP_03",
+              "default": false,
+              "image": "base__component_carbinerifle_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_FLSH",
+              "default": false,
+              "image": "base__component_at_ar_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_MEDIUM",
+              "default": false,
+              "image": "base__component_at_scope_medium.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_SUPP",
+              "default": false,
+              "image": "base__component_at_ar_supp.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_AFGRIP",
+              "default": false,
+              "image": "base__component_at_ar_afgrip.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_CARBINERIFLE_VARMOD_LUXE": {
+        "image": "component_carbinerifle_varmod_luxe.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_CARBINERIFLE_CLIP_01",
+              "default": true,
+              "image": "component_carbinerifle_varmod_luxe__component_carbinerifle_clip_01.png"
+            },
+            {
+              "component": "COMPONENT_CARBINERIFLE_CLIP_02",
+              "default": false,
+              "image": "component_carbinerifle_varmod_luxe__component_carbinerifle_clip_02.png"
+            },
+            {
+              "component": "COMPONENT_CARBINERIFLE_CLIP_03",
+              "default": false,
+              "image": "component_carbinerifle_varmod_luxe__component_carbinerifle_clip_03.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_FLSH",
+              "default": false,
+              "image": "component_carbinerifle_varmod_luxe__component_at_ar_flsh.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_MEDIUM",
+              "default": false,
+              "image": "component_carbinerifle_varmod_luxe__component_at_scope_medium.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_SUPP",
+              "default": false,
+              "image": "component_carbinerifle_varmod_luxe__component_at_ar_supp.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_AFGRIP",
+              "default": false,
+              "image": "component_carbinerifle_varmod_luxe__component_at_ar_afgrip.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_STUNGUN": {
+    "label": "Taser",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    }
+  },
+  "WEAPON_SNIPERRIFLE": {
+    "label": "Sauer 101",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_SNIPERRIFLE_CLIP_01",
+              "default": true,
+              "image": "base__component_sniperrifle_clip_01.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_SUPP_02",
+              "default": false,
+              "image": "base__component_at_ar_supp_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_LARGE",
+              "default": true,
+              "image": "base__component_at_scope_large.png"
+            },
+            {
+              "component": "COMPONENT_AT_SCOPE_MAX",
+              "default": false,
+              "image": "base__component_at_scope_max.png"
+            }
+          ]
+        ]
+      },
+      "COMPONENT_SNIPERRIFLE_VARMOD_LUXE": {
+        "image": "component_sniperrifle_varmod_luxe.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_SNIPERRIFLE_CLIP_01",
+              "default": true,
+              "image": "component_sniperrifle_varmod_luxe__component_sniperrifle_clip_01.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_AR_SUPP_02",
+              "default": false,
+              "image": "component_sniperrifle_varmod_luxe__component_at_ar_supp_02.png"
+            }
+          ],
+          [
+            {
+              "component": "COMPONENT_AT_SCOPE_LARGE",
+              "default": true,
+              "image": "component_sniperrifle_varmod_luxe__component_at_scope_large.png"
+            },
+            {
+              "component": "COMPONENT_AT_SCOPE_MAX",
+              "default": false,
+              "image": "component_sniperrifle_varmod_luxe__component_at_scope_max.png"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "WEAPON_WRENCH": {
+    "label": "Chave de roda",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    },
+    "melee": true
+  },
+  "WEAPON_CROWBAR": {
+    "label": "P\u00e9 de cabra",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    },
+    "melee": true
+  },
+  "WEAPON_SCREWDRIVER": {
+    "label": "Chave de fenda",
+    "melee": true,
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    }
+  },
+  "WEAPON_SHOVEL": {
+    "label": "P\u00e1",
+    "melee": true,
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    }
+  },
+  "TOOL_METALDETECTOR": {
+    "label": "Detector de metais",
+    "melee": true,
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    },
+    "propModel": "metaldetector"
+  },
+  "TOOL_CAMERA": {
+    "label": "C\u00e2mera instant\u00e2nea",
+    "melee": true,
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    },
+    "propModel": "polaroid_camera"
+  },
+  "TOOL_SHOVEL": {
+    "label": "P\u00e1 de escava\u00e7\u00e3o",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    },
+    "melee": true,
+    "propModel": "prop_ld_shovel"
+  },
+  "WEAPON_KNIFE": {
+    "label": "Faca",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    },
+    "melee": true
+  },
+  "WEAPON_BAT": {
+    "label": "Taco de beisebol",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3": {
+        "image": "component_bat_varmod_xm3.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3_01": {
+        "image": "component_bat_varmod_xm3_01.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3_02": {
+        "image": "component_bat_varmod_xm3_02.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3_03": {
+        "image": "component_bat_varmod_xm3_03.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3_04": {
+        "image": "component_bat_varmod_xm3_04.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3_05": {
+        "image": "component_bat_varmod_xm3_05.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3_06": {
+        "image": "component_bat_varmod_xm3_06.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3_07": {
+        "image": "component_bat_varmod_xm3_07.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3_08": {
+        "image": "component_bat_varmod_xm3_08.png",
+        "groups": []
+      },
+      "COMPONENT_BAT_VARMOD_XM3_09": {
+        "image": "component_bat_varmod_xm3_09.png",
+        "groups": []
+      }
+    },
+    "melee": true
+  },
+  "WEAPON_NIGHTSTICK": {
+    "label": "Cassetete",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    },
+    "melee": true
+  },
+  "WEAPON_FLASHLIGHT": {
+    "label": "Lanterna",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": [
+          [
+            {
+              "component": "COMPONENT_FLASHLIGHT_LIGHT",
+              "default": true,
+              "image": "base__component_flashlight_light.png"
+            }
+          ]
+        ]
+      }
+    },
+    "melee": true
+  },
+  "WEAPON_DAGGER": {
+    "label": "Adaga",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    },
+    "melee": true
+  },
+  "WEAPON_BATTLEAXE": {
+    "label": "Machado de batalha",
+    "variants": {
+      "base": {
+        "image": "base.png",
+        "groups": []
+      }
+    },
+    "melee": true
+  }
+}

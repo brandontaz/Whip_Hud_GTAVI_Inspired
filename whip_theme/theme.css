@@ -1,0 +1,14 @@
+/* whip_theme: your own WHIP theme. whip_core loads this file into its page when whip_theme is the active theme
+   (Config.Theme = 'whip_theme' in whip_core, or whip_hud sets it by itself when nothing else is active).
+
+   css/whip_hud.css is whip_hud's layer: server.lua writes it from whip_hud as it starts. It
+     - hides WHIP's own status gauges (health, armour, ...), so the whip_hud bars replace them;
+     - hides WHIP's 3D rev dial, so the whip_hud speedometer replaces it;
+     - clips WHIP's minimap to the rounded GTA VI box with its pink-violet-teal frame, bottom-left.
+   It must stay the first line: CSS ignores an @import after any rule. A missing file would drop the whole theme, which
+   is why one always ships (empty until whip_hud starts).
+
+   Your own tweaks go BELOW this line (colours, fonts, WHIP menus...). */
+@import url('css/whip_hud.css?v=2');
+
+/* ---- your changes here ---- */

@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- starts inactive: nothing shows on the loading screen until the Lua side sends active=true (login) -->
+<html lang="en" class="inactive">
+<head>
+    <meta charset="UTF-8">
+    <title>D11 HUD</title>
+    <link rel="stylesheet" href="hud.css">
+    <link rel="stylesheet" href="ammo.css">
+    <link rel="stylesheet" href="belt.css">
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+    <!-- whip_hud. WHIP's voice gauge stays in whip_core's page (only whip_core knows when the player talks): ../whip/hud.css
+         turns it into a circle. The radar ring is drawn here; the round map under it is WHIP's, clipped and placed by
+         ../whip/hud.css (#minimap3d). -->
+    <main id="hud">
+        <div id="brand" class="area" hidden><img src="logo.png" alt="" draggable="false"></div>
+        <section id="radar" class="area" aria-label="Radar compass"></section>
+        <section id="route" class="area" aria-label="GPS route"></section>
+        <section id="status" class="area"></section>
+        <section id="gauge" class="area"></section>
+        <section id="hints" class="area" aria-label="Action hints"></section>
+        <div id="passenger-seatbelt" aria-hidden="true" aria-label="Passenger seatbelt">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="5.5" r="2.5"></circle>
+                <path d="M5 21v-2.5a7 7 0 0 1 14 0V21"></path>
+                <path class="belt-loose" d="M16 12.6l-3 3.4"></path>
+                <path class="belt-on" d="M16 12.6 8 21"></path>
+            </svg>
+            <span class="seat-tag">P</span>
+        </div>
+    </main>
+    <script src="locales.js"></script>
+    <script src="icons.js"></script>
+    <script src="hud.js"></script>
+    <script src="status.js"></script>
+    <script src="gauge.js"></script>
+    <script src="ammo.js"></script>
+    <script src="belt.js"></script>
+    <script src="radar.js"></script>
+    <script src="route.js"></script>
+    <script src="hints.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html>
